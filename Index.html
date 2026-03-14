@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mir Electric Industries</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-red: #ba1c21;
+            --primary-yellow: #fff200;
+            --dark-gray: #333;
+            --light-bg: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .text-center { text-align: center; }
+        
+        /* Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-area h1 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-area p {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: var(--light-bg);
+            padding: 4rem 0;
+            border-bottom: 5px solid var(--primary-red);
+        }
+
+        #hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        /* Services Section */
+        #services {
+            padding: 4rem 0;
+        }
+
+        .specialist-banner {
+            background-color: var(--primary-yellow);
+            color: var(--dark-gray);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--dark-gray);
+        }
+
+        .services-box {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Team & Contact Section */
+        #contact {
+            background: var(--light-bg);
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .card h3 { color: var(--primary-red); margin-bottom: 0.5rem;}
+        .card h4 { color: #555; margin-bottom: 1rem; }
+        
+        .address-bar {
+            background: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--dark-gray);
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #fff;
+                box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            #hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .badges {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo-area">
+                <h1>Mir Electric Industries</h1>
+                <p>MEI Power Control</p>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                ☰
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="hero" class="text-center">
+        <div class="container">
+            <h2>Powering the Future with Quality Engineering</h2>
+            <p>Your trusted partner in electrical panel manufacturing and power control solutions.</p>
+            <div class="badges">
+                <span>✓ ISO: 9001:2015 Certified</span>
+                <span>✓ CPRI 8623 Certified Company</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="text-center">
+        <div class="container">
+            <div class="specialist-banner">SPECIALIST IN:</div>
+            <div class="services-box">
+                <p>Fabricating/Manufacturing of all types of LT & HT Cubical Panels, Out Door Feeder Pillars & all types of Safari Make Residential Sub Distribution Boards, MCB, Boxes, Etc.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 2rem;">Leadership & Contact</h2>
+            
+            <div class="contact-grid">
+                <div class="card">
+                    <h3>Mr. Mir Farooq</h3>
+                    <h4>Managing Director</h4>
+                    <p><strong>Main Office Emails:</strong><br> mirelectricindustrief@gmail.com</p>
+                    <p style="margin-top: 1rem;"><strong>Office Phones:</strong><br> 
+                    0194-3587533<br> 
+                    9419077673<br> 
+                    9906478459<br> 
+                    7006929846</p>
+                </div>
+
+                <div class="card">
+                    <h3>Er. Mir Uzair Farooq</h3>
+                    <h4>Sales Manager</h4>
+                    <p><em>Diploma in Electrical Engineering</em></p>
+                    <p style="margin-top: 1rem;"><strong>Direct Email:</strong><br> uzairmir900@gmail.com</p>
+                    <p style="margin-top: 1rem;"><strong>Direct Cell:</strong><br> 8825081303</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="address-bar">
+            MIR ABAD, NEW COURT ROAD, BATAMALOO<br>
+            NEAR AL-BARQ HOSPITAL, SRINAGAR
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mir Electric Industries. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple script to toggle the mobile menu
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
