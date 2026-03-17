@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mir Electric Industries - Panel Manufacturing</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-red: #ba1c21;
+            --primary-yellow: #fff200;
+            --dark-gray: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        body {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .text-center { text-align: center; }
+        .section-title { margin-bottom: 2rem; color: var(--primary-red); font-size: 2rem; }
+        
+        /* Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-area h1 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-area p { font-size: 0.8rem; font-weight: bold; color: #555; }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 1.5rem; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary-red); }
+
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero Section */
+        #hero {
+            background: var(--light-bg);
+            padding: 5rem 0;
+            border-bottom: 5px solid var(--primary-red);
+        }
+        #hero h2 { font-size: 2.8rem; margin-bottom: 1rem; color: var(--dark-gray); }
+        .badges {
+            display: flex; justify-content: center; gap: 20px;
+            margin-top: 20px; font-weight: bold; color: var(--primary-red);
+        }
+
+        /* Products Overview */
+        #products { padding: 5rem 0; }
+        
+        .specialist-banner {
+            background-color: var(--primary-yellow);
+            color: var(--dark-gray);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            border: 2px solid var(--dark-gray);
+        }
+
+        /* Accordion Styles (JS Controlled) */
+        .accordion-item {
+            background: var(--white);
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .accordion-header {
+            background-color: var(--light-bg);
+            padding: 1.2rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover { background-color: #f0f0f0; }
+
+        .accordion-content {
+            padding: 0 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .accordion-content p { margin: 1.2rem 0; }
+        .accordion-content ul { margin: 1rem 0 1rem 2rem; }
+
+        /* Contact Section */
+        #contact { background: var(--light-bg); padding: 5rem 0; }
+
+
+        
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-red);
+            display: inline-block;
+            width: 85%;
+            margin: 0 1.5rem 2rem 1.5rem;
+
+            
+        }
+        .card h3 { color: var(--primary-red); margin-bottom: 0.5rem;}
+        .card h4 { color: #555; margin-bottom: 1rem; }
+
+        .address-bar
+        {
+            background-color: red;
+            text-align: center;
+            font-weight: bold;
+             border-radius: 8px;
+
+        }
+
+       
+
+        footer { text-align: center; padding: 1.5rem; background: var(--dark-gray); color: white; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .contact-container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; flex-direction: column; width: 100%;
+                position: absolute; top: 100%; left: 0;
+                background: var(--white); box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { margin: 1rem 0; text-align: center; }
+            .menu-toggle { display: block; }
+            #hero h2 { font-size: 2rem; }
+            .badges { flex-direction: column; gap: 5px; }
+            .specialist-banner { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo-area">
+                <h1>Mir Electric Industries</h1>
+                <p>MEI Power Control</p>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="hero" class="text-center">
+        <div class="container">
+            <h2>Powering the Future with Quality Engineering</h2>
+            <p>Your trusted manufacturing partner for robust electrical panels, distribution boards, and power control systems.</p>
+            <div class="badges">
+                <span>✓ ISO: 9001:2015 Certified</span>
+                <span>✓ CPRI 61439 Certified Company</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <div class="text-center">
+                <div class="specialist-banner">SPECIALIST MANUFACTURERS IN:</div>
+            </div>
+            
+            <h2 class="section-title text-center">Our Electrical Panel Capabilities</h2>
+            <p class="text-center" style="margin-bottom: 2rem;">Click on any product category below to view detailed specifications.</p>
+
+            <div class="accordion-container">
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        LT & HT Cubical Panels <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We manufacture highly reliable Low Tension (LT) and High Tension (HT) cubical panels designed for optimal power distribution and safety. These are essential for both receiving power from transformers and safely stepping it down for facility usage.</p>
+                        <ul>
+                            <li><strong>HT Panels:</strong> Built to withstand high voltages, incorporating robust switchgear, vacuum circuit breakers (VCBs), and advanced relay protection to prevent systemic electrical faults.</li>
+                            <li><strong>LT Panels:</strong> Customized for precise secondary power distribution. Features include busbar arrangements, Air Circuit Breakers (ACBs), and power factor correction integration.</li>
+                            <li>Rigid CRCA sheet steel enclosures with multi-stage powder coating for long-lasting durability.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Outdoor Feeder Pillars <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our outdoor feeder pillars provide a safe, secure, and weather-proof localized distribution point for electrical circuits. They are widely used in street lighting networks, housing estates, and industrial complexes.</p>
+                        <ul>
+                            <li>IP54/IP55 rated for high resistance against dust, rain, and harsh weather conditions in the Kashmir valley.</li>
+                            <li>Heavy-duty hinges, robust locking mechanisms, and elevated base framing to prevent water ingress.</li>
+                            <li>Internally equipped with customized busbars, HRC fuse links, and miniature circuit breakers (MCBs).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Sub Distribution Boards & MCB Boxes <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We fabricate high-quality Residential Sub Distribution Boards (including Safari Make variants) tailored for housing and commercial building load management.</p>
+                        <ul>
+                            <li>Designed for safe division of electrical power feeds into subsidiary circuits.</li>
+                            <li>Ample wiring space for easy termination and maintenance.</li>
+                            <li>Aesthetic designs suitable for residential mounting with transparent or opaque MCB protection covers.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title text-center">Get in Touch</h2>
+            
+            <div class="contact-container">
+                <div class="contact-grid">
+                    <div class="card">
+                        <h3>Mr. Mir Farooq</h3>
+                        <h3>Mr. Mir Younis</h3>
+                        <h4>Managing Director</h4>
+                        <p><strong>Email:</strong> <br>
+    <a href="mailto:mirelectricindustrief@gmail.com" class="contact-link">mirelectricindustrief@gmail.com</a>
+</p>
+                        <p style="margin-top: 1rem;"><strong>Office Phones:</strong><br> 
+                        0194-3587533 | 9419077673<br> 
+                        9906478459 | 7006929846
+                         </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Er. Mir Uzair Farooq</h3>
+                        <h4>Sales Manager</h4>
+                        <p><em>Diploma in Electrical Engineering</em></p>
+                        <p><strong>Email:</strong> <br>
+    <a href="mailto:uzairmir900@gmail.com" class="contact-link">uzairmir900@gmail.com</a>
+</p>
+                        <p style="margin-top: 0.5rem;"><strong>Direct Cell:</strong> 8825081303</p>
+                    </div>
+                </div>
+                <br><br>
+
+               
+            <div class="address-bar">
+                MIR ABAD, NEW COURT ROAD, BATAMALOO<br>
+                NEAR AL-BARQ HOSPITAL, SRINAGAR
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mir Electric Industries. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // 2. Accordion Functionality for Products
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                // Toggle active class on header
+                this.classList.toggle('active');
+                
+                // Get the content div
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('span');
+                
+                if (content.style.maxHeight) {
+                    // Close it
+                    content.style.maxHeight = null;
+                    content.style.padding = "0 1.2rem";
+                    icon.textContent = "+";
+                } else {
+                    // Open it
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.padding = "1.2rem";
+                    icon.textContent = "−";
+                }
+            });
+        });
+
+       
+    </script>
+</body>
+</html>
